@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!-- Custom CSS styles for the Beacon button -->
+    <style>
+      /* You can remove the custom CSS styles here */
+    </style>
+    <script type="text/javascript">
+      !(function (e, t, n) {
+        function a() {
+          var e = t.getElementsByTagName("script")[0],
+            n = t.createElement("script");
+          (n.type = "text/javascript"),
+            (n.async = !0),
+            (n.src = "https://beacon-v2.helpscout.net"),
+            e.parentNode.insertBefore(n, e);
+        }
+        if (
+          ((e.Beacon = n =
+            function (t, n, a) {
+              e.Beacon.readyQueue.push({ method: t, options: n, data: a });
+            }),
+          (n.readyQueue = []),
+          "complete" === t.readyState)
+        )
+          return a();
+        e.attachEvent
+          ? e.attachEvent("onload", a)
+          : e.addEventListener("load", a, !1);
+      })(window, document, window.Beacon || function () {});
+
+      // Wait for the page to fully load
+      document.addEventListener("DOMContentLoaded", function () {
+        // Select the Beacon button element
+        const beaconButton = document.querySelector(
+          ".c-FabButtonCritical__button--text-and-icon"
+        );
+
+        // Apply your custom styles
+        if (beaconButton) {
+          beaconButton.style.height = "1vh";
+        }
+      });
+    </script>
+    <script type="text/javascript">
+      window.Beacon("init", "99945135-b710-4db9-adfe-0618ce94410c");
+    </script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>

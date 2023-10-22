@@ -1,0 +1,62 @@
+.sidebar-root {
+  background-color: #3e3b56;
+  width: 15vw !important;
+  height: 100vh;
+  border-top-right-radius: 10px; /* Adjust the value as needed */
+  border-bottom-right-radius: 10px; /* Adjust the value as needed */
+  /* Leave the other corners as zero or default */
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  display: flex;
+  flex-direction: column;
+
+  color: white !important;
+  font-size: 2vh;
+}
+
+.sidebar-logo {
+  flex-direction: row;
+  width: 8vw;
+  height: 8vh;
+  padding-left: 5vh;
+}
+
+.sidebar-menu-text {
+  padding-left: 4vh;
+  padding-top: 4vh;
+  margin-bottom: 2vh;
+}
+
+.sidebar-menu-items {
+  padding-left: 2vh;
+  padding-right: 2vh;
+}
+
+.sidebar-active-menu {
+  display: flex;
+  padding: 0.5vh;
+  background-color: #ff4e3a;
+  border-radius: 1vh;
+  margin: 2vh;
+  cursor: pointer;
+}
+
+.sidebar-in-active-menu {
+  display: flex;
+  padding: 0.5vh;
+  border-radius: 1vh;
+  margin: 2vh;
+  cursor: pointer;
+}
+
+.sidebar-home-icon {
+  margin-right: 1vh;
+  width: 4vh;
+  height: 4vh;
+}
+
+.sidebar-home-icon2 {
+  margin-right: 1vh;
+  width: 4vh;
+  height: 3vh;
+}

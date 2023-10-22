@@ -1,0 +1,11 @@
+.home-root {
+    color: white;
+    flex-direction: column;
+    padding: 2vh;
+}
+
+
+tbody tr:hover {
+  background-color: #6d6b7f !important; /* Change the background color when hovered */
+  
+}

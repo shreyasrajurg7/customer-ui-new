@@ -1,0 +1,73 @@
+import React from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import "./Sidebar.css";
+
+import { useMenu } from "../common/menuContext/MenuContext";
+
+const Sidebar = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  
+  const { selectedMenu, selectMenu } = useMenu();
+
+  const navigateTo = (route, menu) => {
+    navigate(route);
+    selectMenu(menu);
+  };
+
+  return (
+    <div className="sidebar-root">
+      <img className="sidebar-logo" src="/icons/voice-care-logo.svg" />
+      <span className="sidebar-menu-text">Menu</span>
+      <div className="sidebar-menu-items">
+        <div
+          className={
+            location.pathname === "/" ? "sidebar-active-menu" : "sidebar-in-active-menu"
+          }
+          onClick={() => navigateTo("/", "Home")}
+        >
+          <img className="sidebar-home-icon" src="/icons/home-icon.svg" />
+          Home
+        </div>
+        <div
+          className={
+            location.pathname === "/call-automation" ? "sidebar-active-menu" : "sidebar-in-active-menu"
+          }
+          onClick={() => navigateTo("/call-automation", "Call Automation")}
+        >
+          <img className="sidebar-home-icon" src="/icons/call-automation.svg" />
+          Call Automation
+        </div>
+        <div
+          className={
+            location.pathname === "/call-history" ? "sidebar-active-menu" : "sidebar-in-active-menu"
+          }
+          onClick={() => navigateTo("/call-history", "Call History")}
+        >
+          <img className="sidebar-home-icon" src="/icons/call-history.svg" />
+          Call History
+        </div>
+        <div
+          className={
+            location.pathname === "/analytics" ? "sidebar-active-menu" : "sidebar-in-active-menu"
+          }
+          onClick={() => navigateTo("/analytics", "Analytics")}
+        >
+          <img className="sidebar-home-icon2" src="/icons/analytics.svg" />
+          Analytics
+        </div>
+        <div
+          className={
+            location.pathname === "/settings" ? "sidebar-active-menu" : "sidebar-in-active-menu"
+          }
+          onClick={() => navigateTo("/settings", "Settings")}
+        >
+          <img className="sidebar-home-icon2" src="/icons/settings.svg" />
+          Settings
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Sidebar;

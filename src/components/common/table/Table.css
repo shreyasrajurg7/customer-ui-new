@@ -1,0 +1,79 @@
+/* Style for the entire table container */
+.table-container {
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 2vh;
+}
+
+/* Style for the table headers */
+table {
+  border-collapse: collapse;
+  border-radius: 10px !important;
+}
+
+thead {
+  background: #333; /* Header color */
+  color: white;
+}
+
+th {
+  padding: 10px;
+  text-align: left;
+}
+
+/* Style for the table data rows */
+tbody {
+  background: #f0f0f0; /* Data row color */
+}
+tr {
+  border-bottom: 0.5px solid #ccc; /* Separator between rows, set to a smaller size */
+  border-color: #3f3d5a;
+}
+
+tr:last-child {
+  border-bottom: none; /* Remove the border on the last row */
+}
+
+td {
+  justify-content: center;
+  align-items: center;
+  padding: .5vh;
+}
+
+/* Add styles for pagination and page numbers */
+.pagination {
+  display: flex;
+  background-color: #3e3b56;
+  padding: 1vh;
+}
+
+.pagination button {
+  border: 1px solid #ccc;
+  margin: 0 2px;
+  cursor: pointer;
+  border-radius: 2vh;
+  border: none;
+  color: #fff;
+  background: #3e3b56;
+  transition: background 0.3s, color 0.3s;
+}
+
+.pagination button:hover {
+  background: #333;
+  color: #fff;
+}
+
+.pagination .current-page {
+  background: #efeff2;
+  color: #000;
+  font-weight: bold;
+}
+
+.pagination select {
+  background: #3e3b56;
+  color: #fff;
+  border: none;
+  margin-right: 5vh;
+  margin-left: 1vh;
+}
+

@@ -1,0 +1,7 @@
+.footer-root {
+  height: 4vh;
+  color: #9b99aa;
+  font-size: 2vh;
+  padding-left: 2vh;
+  flex-direction: row;
+}

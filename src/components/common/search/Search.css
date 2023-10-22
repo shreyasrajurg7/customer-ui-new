@@ -1,0 +1,29 @@
+/* Style for the search container */
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: #242143;
+    border: 1px solid #636279;
+    border-radius: 10px;
+    padding: 5px;
+    width: 60vw;
+    height: 2.5vh;
+    outline: none;
+  }
+  
+  /* Style for the search icon */
+  .search-icon {
+    margin-right: 10px;
+    color: #333;
+    height: 2.5vh;
+  }
+  
+  /* Style for the search input */
+  .search-input {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    color: #333;
+  }
+  

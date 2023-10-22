@@ -1,0 +1,31 @@
+.header-root {
+  background-color: #151138;
+  flex-direction: row;
+  width: 85vw;
+  height: 4vh;
+  color: white;
+  padding: 2vh;
+}
+
+.header-left {
+  float: left;
+}
+
+.header-right {
+  float: right;
+  display: flex;
+}
+
+.header-user-icon {
+  width: 4vh;
+  margin-left: 2vh;
+}
+
+.gradient-line {
+    border: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #3e3b56 25%, #fc2b23 90%);
+    border-radius: 5px;
+  }
+  
+  
