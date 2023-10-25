@@ -1,6 +1,7 @@
 .sidebar-root {
-  background-color: #3e3b56;
-  width: 15vw !important;
+  /* background-color: #3e3b56; */
+  width: 16vw !important;
+  /* min-width: 16vw !important; */
   height: 100vh;
   border-top-right-radius: 10px; /* Adjust the value as needed */
   border-bottom-right-radius: 10px; /* Adjust the value as needed */

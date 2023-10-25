@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "./Sidebar.css";
 
 import { useMenu } from "../common/menuContext/MenuContext";
+import { useTheme } from "../../ThemeContext";
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -15,8 +16,12 @@ const Sidebar = () => {
     selectMenu(menu);
   };
 
+  const {getSelectedTheme} = useTheme();
+  const theme = getSelectedTheme();
+  const{sidebar} = theme;
+
   return (
-    <div className="sidebar-root">
+    <div className="sidebar-root" style={{backgroundColor: sidebar}}>
       <img className="sidebar-logo" src="/icons/voice-care-logo.svg" />
       <span className="sidebar-menu-text">Menu</span>
       <div className="sidebar-menu-items">

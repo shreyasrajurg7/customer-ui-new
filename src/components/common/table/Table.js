@@ -82,12 +82,13 @@ const Table = ({
       style={{
         maxHeight,
         overflowX: contentHeight === "auto" ? "hidden" : "scroll",
-        overflowY: "auto", // Add this line to enable horizontal scroll.
+        overflowY: "auto",
       }}
     >
       <table style={{
+        maxHeight,
         overflowX: contentHeight === "auto" ? "hidden" : "scroll",
-        overflowY: "auto", // Add this line to enable horizontal scroll.
+        overflowY: "auto",
       }}>
         <thead style={{ background: headerColor, color: "white" }}>
           <tr>
@@ -108,7 +109,7 @@ const Table = ({
                 <td key={colIndex} style={{ textAlign: "center" }}>
                   {column.name === "Action"
                     ? column.render(row)
-                    : row[column.name]}
+                    : column.selector ? column.selector(row) : row[column.name]}
                 </td>
               ))}
             </tr>
