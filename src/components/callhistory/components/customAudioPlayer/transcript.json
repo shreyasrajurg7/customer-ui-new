@@ -1,0 +1,33 @@
+[
+    {
+        "startTime": 1,
+        "endTime": 4,
+        "speakerName": "Sandy",
+        "text": "Thanks for calling. This is Sandy. How may I help you today"
+    },
+    {
+        "startTime": 4,
+        "endTime": 10.5,
+        "speakerName": "James",
+        "text": "Hi my name is James. I'm calling for doctor office and i would like to take a claim status for a patient"
+    },
+    {
+        "startTime": 10.5,
+        "endTime": 12.5,
+        "speakerName": "Sandy",
+        "text": "Which doctor's office you are calling for?"
+    },
+    {
+        "startTime": 12.5,
+        "endTime": 15,
+        "speakerName": "James",
+        "text": "I'm calling for general orthopedic associates"
+    },
+    {
+        "startTime": 15,
+        "endTime": 17,
+        "speakerName": "Sandy",
+        "text": "What is your telephone number?"
+    }
+    
+]

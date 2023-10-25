@@ -1,0 +1,49 @@
+.setting-root {
+  color: white;
+  flex-direction: column;
+  padding: 2vh;
+}
+
+.setting-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.setting-header-name {
+  font-size: 2vh !important;
+  margin-bottom: 2vh;
+}
+
+.setting-content {
+    display: flex;
+    flex-direction: row;
+}
+
+.setting-sidebar {
+    width: 12vw;
+    flex-direction: column;
+}
+.setting-sidebar-active-menu {
+  display: flex;
+  padding: 0.5vh;
+  background-color: #ff4e3a;
+  border-radius: 1vh;
+  margin: 1vh;
+  width: 20vh;
+  cursor: pointer;
+}
+
+.setting-sidebar-in-active-menu {
+  display: flex;
+  padding: 0.5vh;
+  border-radius: 1vh;
+  margin: 1vh;
+  width: 20vh;
+  cursor: pointer;
+}
+
+.setting-inner-content {
+    flex-direction: column;
+    margin: 1vh;
+}

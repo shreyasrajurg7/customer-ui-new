@@ -1,0 +1,65 @@
+.date-picker {
+  font-family: sans-serif;
+}
+
+.custom-datepicker-input {
+  display: flex;
+  background-color: #3e3b56;
+}
+.date-picker-input {
+  border: none;
+  height: 4vh;
+  background: url('/public/icons/down.svg') no-repeat right center;
+  overflow: hidden;
+  background-color: #3e3b56;
+  text-align: left;
+  border-radius: 1vh;
+  color: #fff;
+  padding-left: .5vh;
+  padding-right: 5vh;
+}
+.rmdp-wrapper {
+  background-color: #3e3b56;
+}
+
+.rmdp-shadow {
+  box-shadow: none;
+  border: none;
+}
+
+.rmdp-range {
+  background-color: #ff4e3a;
+}
+
+.rmdp-day.rmdp-today span {
+  background-color: #9e9dab;
+}
+
+.rmdp-panel-header,
+.rmdp-header-values,
+.rmdp-day {
+  color: #fff;
+}
+
+
+.rmdp-panel-body li {
+  background-color: transparent !important;
+}
+
+.rmdp-panel-body li .b-deselect {
+  background-color: #ff4e3a !important;
+}
+
+.rmdp-day.rmdp-selected span:not(.highlight) {
+  background-color: #ff4e3a;
+  box-shadow: 0 0 3px #8798ad;
+  color: #fff;
+}
+
+.rmdp-day span:hover {
+  background-color: #ff4e3a !important;
+}
+
+.date-picker-input::placeholder {
+  color: #fff; /* Replace with the color code you want */
+}

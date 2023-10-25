@@ -1,0 +1,280 @@
+:root {
+  --primary-bg: #07012b;
+  --secondary-bg: #252142;
+  --bg-lite: #3f3c57;
+  --white: #ffffff;
+  --orange: #f54f3b;
+  --text: #efedf6;
+  --text-light: #a9a7bc;
+  --border-radius-small: 4px;
+  --border-radius-medium: 8px;
+  --border-radius-large: 12px;
+}
+
+.call-history {
+  background-color: var(--primary-bg);
+}
+
+.call-history > * {
+  box-sizing: border-box;
+}
+
+/* search input styles start */
+.call-history__searchInput {
+  background-color: var(--secondary-bg);
+  border-radius: var(--border-radius-small);
+  color: var(--white);
+  border: none;
+  border-radius: var(--border-radius-medium);
+}
+
+.call-history__searchInput.audio-transcript-search {
+  background-color: var(--bg-lite);
+  border-radius: var(--border-radius-large);
+}
+
+.call-history__searchInput .ant-input-group-addon {
+  border: none;
+}
+
+.call-history__searchInput input {
+  outline: none;
+  border: none;
+  background-color: var(--secondary-bg);
+  font-size: 16px;
+  caret-color: var(--text-light);
+  color: var(--text-light);
+}
+
+.call-history__searchInput.audio-transcript-search input {
+  background-color: var(--bg-lite);
+  padding: 9px;
+}
+
+.call-history__searchInput input::placeholder {
+  color: var(--text-light);
+}
+
+.call-history__searchInput.audio-transcript-search input::placeholder {
+  font-weight: 600;
+}
+
+.call-history__searchInput input:active {
+  outline: none;
+}
+/* search input styles ends */
+
+
+/* dropdown styles starts */
+.call-history__dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  border-radius: var(--border-radius-medium);
+}
+
+.call-history__dropdown select {
+  width: 100%;
+  background-color: var(--bg-lite) !important;
+  color: var(--text);
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  appearance: none; /* Remove default dropdown arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  outline: none;
+  font-weight: 600;
+}
+
+.call-history__dropdown select:focus {
+  outline: none;
+}
+
+.call-history__dropdown select option {
+  background-color: var(--bg-lite);
+  color: #efedf6;
+}
+
+.call-history__dropdown select::after {
+  content: '\25BC'; /* Unicode down arrow character */
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  color: #efedf6; /* Arrow color */
+}
+/* dropdown styles ended */
+
+/* user card styles starts */
+.call-history__user-card {
+  /* border: 1px solid var(--text); */
+  width: 100%;
+  border-radius: var(--border-radius-medium);
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.call-history__avatar {
+  background-color: #645f7d;
+}
+
+.call-history__user-card:not(.user-info):hover, .call-history__user-card.active {
+  background-color: var(--bg-lite);
+}
+
+.call-history__user-card {
+
+}
+
+.call-history__user-list {
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+/* user card styles ends */
+
+
+/* Define styles for the container with scrolling content */
+.scroll-container {
+  width: 100%; /* Set the width of your container */
+  max-height: 200px; /* Set the height of your container */
+  overflow: auto; /* Enable scrolling */
+  padding-right: 4px;
+}
+
+/* Style the scrollbar track and thumb */
+.scroll-container::-webkit-scrollbar {
+  width: 6px; /* Adjust the width as needed */
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the scrollbar thumb */
+  border-radius: 4px; /* Rounded corners for the thumb */
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color when hovering over the thumb */
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: var(--bg-lite); /* Color of the scrollbar track */
+}
+
+/* Firefox scrollbar styles */
+.scroll-container {
+  scrollbar-width: thin; /* Set the scrollbar width */
+  scrollbar-color: #888 var(--bg-lite); /* Thumb and track colors */
+}
+
+.scroll-container:hover {
+  scrollbar-color: #555 var(--bg-lite); /* Thumb color when hovering */
+}
+
+
+.call-history__audio-visual {
+  width: 100%;
+  padding: 8px 12px;
+  box-sizing: border-box;
+}
+
+.call-history__transcript {
+  background-color: var(--bg-lite);
+  width: 100%;
+  border-radius: var(--border-radius-large);
+  padding: 8px;
+  font-size: 14px;
+  color: var(--text);
+}
+.call-history__transcript.completed {
+  color: var(--orange);
+}
+
+.call-history__transcript > span {
+  color: inherit;
+}
+
+.call-history__transcript-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+
+
+.call-history__call-summary {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 12px;
+}
+
+.call-summary-more-headers-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.call-summary-more-headers-wrapper .more-details, .call-summary-more-headers-wrapper .transfer-details {
+  width: 45%;
+  text-align: center;
+  border-radius: var(--border-radius-large);
+  color: var(--text);
+  background-color: var(--primary-bg);
+  padding: 6px 4px;
+  cursor: pointer;
+}
+
+.call-summary-more-headers-wrapper .more-details.active, .call-summary-more-headers-wrapper .transfer-details.active {
+  background-color: var(--bg-lite);
+}
+
+.call-summary-more-headers-wrapper .more-details:hover, .call-summary-more-headers-wrapper .transfer-details:hover {
+  background-color: var(--bg-lite);
+}
+
+.call-summary-more-headers-wrapper .more-details > span, .call-summary-more-headers-wrapper .transfer-details > span {
+  color: inherit;
+}
+
+
+.call-history-user-list-wrapper {
+  width: 100%;
+}
+
+.call-history-audio-visualizer-wrapper {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--secondary-bg);
+  border-radius: var(--border-radius-large);
+  padding-bottom: 12px;
+  margin: 1vh;
+  height: 80vh;
+}
+
+.call-history-call-summary-wrapper {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.call-summary-more-wrapper {
+  margin-top: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: var(--border-radius-large);
+  background-color: var(--secondary-bg);
+  padding: 12px 4px;
+  box-sizing: border-box;
+}
+
+.call-summary-copay-wrapper {
+  width: 100%;
+  padding: 10px 20px;
+  padding-bottom: 20px;
+  box-sizing: border-box;
+  border-radius: var(--border-radius-large);
+  background-color: var(--secondary-bg);
+}

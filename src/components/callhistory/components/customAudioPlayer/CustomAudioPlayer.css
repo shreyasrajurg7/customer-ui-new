@@ -1,0 +1,44 @@
+#wave {
+  background-color: #eef0f9;
+}
+.highlight {
+  color: #6b42de;
+  font-weight: 600;
+  font-size: large;
+}
+
+.waveform path {
+  stroke: #6b42de !important;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  height: 8px;
+  border-radius: 5px;
+  background-color: #ddd;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #6b42de;
+  cursor: pointer;
+}
+
+input[type=range]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #6b42de;
+  cursor: pointer;
+}

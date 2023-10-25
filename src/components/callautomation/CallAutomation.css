@@ -1,0 +1,89 @@
+.call-automation-root {
+    display: flex;
+    flex-direction: row;
+    margin: 2vh;
+}
+
+.ca-left-section {
+    flex-direction: column;
+    width: 45vh;
+}
+
+.ca-right-section {
+    flex-direction: column;
+}
+
+/*cals = call automation left section */
+.cals-frequency {
+    display: flex;
+    border-radius: 1vh;
+    overflow: hidden;
+    margin: 1vh;
+  }
+  
+  .switch-freq {
+    flex: 1;
+    padding: 1vh;
+    cursor: pointer;
+    border: none;
+    background-color: #3e3b56;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    width: 20vh;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 0vh;
+  }
+  
+  .switch-freq-selected {
+    cursor: pointer;
+    border: none;
+    padding: 1vh;
+    background-color: #ff4e3a;
+    color: #fff;
+    width: 20vh;
+  }
+  
+.cals-time {
+  background-color: #3e3b56;
+  height: max-content;
+  margin: 1vh;
+  border-radius: 1vh;
+  padding: 2vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.cals-dates-icon {
+  width: 1vh;
+}
+
+.cals-end-time-btn,
+.cals-start-time-btn {
+  display: flex;
+  flex-direction: row;
+  background-color: #04002B;
+  width: 37vh;
+  padding: 1vh;
+  border-radius: 1vh;
+  justify-content: space-between;
+}
+
+.cals-end-time-btn {
+  margin-top: 2vh;
+}
+
+.cals-select-auto-feature {
+  margin: 0vh 1vh 1vh 1vh;
+  background-color: #3e3b56;
+  color: #fff;
+  outline: none;
+  border: none;
+  width: 43vh;
+  padding: 1vh;
+  border-radius: 1vh;
+}
+
+.cals-select-auto-feature::after {
+  content: url("/public/icons/down.svg");
+}
