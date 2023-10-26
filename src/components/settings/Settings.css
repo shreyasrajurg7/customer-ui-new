@@ -21,7 +21,7 @@
 }
 
 .setting-sidebar {
-    width: 12vw;
+    width: 30vh;
     flex-direction: column;
 }
 .setting-sidebar-active-menu {
@@ -30,7 +30,7 @@
   background-color: #ff4e3a;
   border-radius: 1vh;
   margin: 1vh;
-  width: 20vh;
+  width: 25vh;
   cursor: pointer;
 }
 
@@ -39,11 +39,15 @@
   padding: 0.5vh;
   border-radius: 1vh;
   margin: 1vh;
-  width: 20vh;
+  width: 25vh;
   cursor: pointer;
 }
 
 .setting-inner-content {
     flex-direction: column;
     margin: 1vh;
+}
+
+.user-access-add-button {
+  display: flex;
 }

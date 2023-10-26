@@ -7,16 +7,27 @@ import {
   deleteUserRole,
 } from "../../../utils/CustomerUiAPI";
 import { ToastContainer, toast } from "react-toast";
+import { UserRole } from "./addUserRole/UserRole";
 
 const UserRoles = () => {
   const [visible, setVisible] = useState(false);
   const [data, setData] = useState([]);
   const [editData, setEditData] = useState({});
+  const [mode, setMode] = useState("add");
+
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     async function fetchData() {
+      setLoading(true);
       getAllCustomerUiRbca("hunnurji@voicecare.ai", "test-session-id")
-        .then((res) => setData(res.response))
-        .catch((res) => console.log(res));
+        .then((res) => {
+          setLoading(false);
+          setData(res.response);
+        })
+        .catch((res) => {
+          setLoading(false);
+          console.log(res);
+        });
     }
     fetchData();
   }, [editData, visible]);
@@ -38,17 +49,18 @@ const UserRoles = () => {
 
   const columns = [
     {
+      label: "Role",
       name: "Role",
+      width: "35vw",
       selector: (row) => row.role,
-      reorder: true,
     },
     {
-      name: "Permissions",
-      selector: (row) => row.permissions,
-      reorder: true,
-      cell: (row) => (
-        <div style={{ display: "flex" }}>
-          <div style={{ float: "left", width: "15vw", overflow: "hidden" }}>
+      label: "Permissions",
+      name: "Action",
+      width: "35vw",
+      render: (row) => (
+        <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+          <div style={{ float: "left",}}>
             {convertStringArrayToArray(row.permissions).length}
           </div>
           <div style={{ float: "right" }}>
@@ -72,7 +84,7 @@ const UserRoles = () => {
 
   const notifyMessage = (msg) =>
     toast(msg, {
-      backgroundColor: "#8329C5",
+      backgroundColor: "#f54f3b",
       color: "#ffffff",
     });
   const handleEdit = (row) => {
@@ -84,27 +96,56 @@ const UserRoles = () => {
     setEditData(data);
   };
 
+  const handleAdd = () => {
+    setVisible(true);
+    setMode("add");
+  }
+
   const handleDeleteUser = (role) => {
     const data = {
       role: role,
     };
     notifyMessage("Deleting Role!");
     deleteUserRole(data, "hunnurji@voicecare.ai", "test-session-id")
-      .then((res) => toast.info("Deleted Role!"))
+      .then((res) => notifyMessage("Deleted Role!"))
       .then(() => setEditData([]));
   };
 
   return (
     <div>
-      {data.length > 0 && <Table
-        headerColor={"#302d4c"}
-        dataColor={"#252244"}
-        columns={columns}
-        data={data}
-        itemsPerPageOptions={[5, 10, 20]}
-        defaultItemsPerPage={10}
-        maxHeight={"75vh"}
-      />}
+      {loading ? (
+        <img className="loader" src="/icons/loader_white.gif" />
+      ) : (
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex", justifyContent: "flex-end" }}>
+            <span style={{ margin: "1vh" }}>
+              <Button
+                label={"Add New Role"}
+                color={"#ff4e3a"}
+                width={"24vh"}
+                height={"4vh"}
+                onClick={handleAdd}
+              />
+            </span>
+          </div>
+          <Table
+            headerColor={"#302d4c"}
+            dataColor={"#252244"}
+            columns={columns}
+            data={data}
+            itemsPerPageOptions={[5, 10, 20]}
+            defaultItemsPerPage={10}
+            maxHeight={"75vh"}
+          />
+        </div>
+      )}
+      <UserRole
+        visible={visible}
+        editData={editData}
+        setVisible={setVisible}
+        setEditData={setEditData}
+        mode={mode}
+      />
       <ToastContainer />
     </div>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import "./Search.css";
-const Search = () => {
+const Search = ({onChange}) => {
   return (
     <div className="search-container">
       {/* <i className="search-icon fas fa-search"></i> */}
@@ -9,6 +9,7 @@ const Search = () => {
         type="text"
         className="search-input"
         placeholder="Search"
+        onChange={(e) => onChange(e.target.value)}
       />
     </div>
   );

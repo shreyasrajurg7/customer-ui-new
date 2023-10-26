@@ -19,7 +19,8 @@ const Table = ({
   useEffect(() => {
     // Calculate the content height based on data length and items per page.
     const rowsPerPage = Math.min(data.length, itemsPerPage);
-    const calculatedHeight = rowsPerPage * /* Height of a single row in pixels */ 50;
+    const calculatedHeight =
+      rowsPerPage * /* Height of a single row in pixels */ 50;
 
     // Set the content height based on whether it exceeds maxHeight.
     setContentHeight(calculatedHeight > maxHeight ? maxHeight : "auto");
@@ -85,11 +86,14 @@ const Table = ({
         overflowY: "auto",
       }}
     >
-      <table style={{
-        maxHeight,
-        overflowX: contentHeight === "auto" ? "hidden" : "scroll",
-        overflowY: "auto",
-      }}>
+      <table
+        style={{
+          maxHeight,
+          overflowX: contentHeight === "auto" ? "hidden" : "scroll",
+          overflowY: "auto",
+          width: "-webkit-fill-available"
+        }}
+      >
         <thead style={{ background: headerColor, color: "white" }}>
           <tr>
             {columns.map((column, index) => (
@@ -97,7 +101,7 @@ const Table = ({
                 key={index}
                 style={{ width: column.width || "auto", textAlign: "center" }}
               >
-                {column.name}
+                {column.label}
               </th>
             ))}
           </tr>
@@ -109,7 +113,9 @@ const Table = ({
                 <td key={colIndex} style={{ textAlign: "center" }}>
                   {column.name === "Action"
                     ? column.render(row)
-                    : column.selector ? column.selector(row) : row[column.name]}
+                    : column.selector
+                    ? column.selector(row)
+                    : row[column.name]}
                 </td>
               ))}
             </tr>
@@ -119,7 +125,7 @@ const Table = ({
 
       <div
         className="pagination"
-        style={{ display: "flex", justifyContent: "space-between" }}
+        style={{ display: "flex", justifyContent: "space-between", width: "inherit" }}
       >
         <span>
           Page {currentPage} of {totalPages}

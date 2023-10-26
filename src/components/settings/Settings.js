@@ -5,11 +5,11 @@ import UserRoles from "./userRoles/UserRoles";
 
 const Settings = () => {
   const [menu, setMenu] = useState("users");
+  
   return (
     <div className="setting-root">
       <div className="setting-header">
         <span className="setting-header-name">User Selection</span>
-        <span>Add User</span>
       </div>
       <div className="setting-content">
         <div className="setting-sidebar">

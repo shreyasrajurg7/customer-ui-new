@@ -10,6 +10,8 @@ export function useTheme() {
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState("dark");
+  
+  const [batchId, setBatchId] = useState("");
 
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
@@ -24,7 +26,9 @@ export function ThemeProvider({ children }) {
   const themeData = {
     theme,
     toggleTheme,
-    getSelectedTheme
+    getSelectedTheme,
+    batchId,
+    setBatchId
   };
 
   return (

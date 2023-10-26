@@ -2,13 +2,86 @@ import "./Home.css";
 import Table from "../common/table/Table";
 import Button from "../common/button/Button";
 import Search from "../common/search/Search";
+import {getProviderData, getBatchData} from "../../utils/CustomerUiAPI";
+import { useEffect, useState } from "react";
+import { useTheme } from "../../ThemeContext";
+
+import { useNavigate } from "react-router-dom";
 const Home = () => {
+  const {batchtId, setBatchId} = useTheme();
+  const [selected, setSelected] = useState("");
+  const [batchData, setBatchData] = useState([]);
+  const [filterText, setFilterText] = useState("");
+  const [batchDataBackup, setBatchDataBackUp] = useState([]);
+  const [billingPopup, setBillingPopup] = useState(false);
+  // Define a sequential ID counter
+  const [sequentialId, setSequentialId] = useState(0);
+
+  const [loading, setLoading] = useState(false);
+  const [page2Visible, setPage2Visible] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setLoading(true);
+    getProviderData("hunnurji@voicecare.ai", "test-session-id")
+      .then((res) => {
+        getBatchData(
+          res.response.providerId,
+          "hunnurji@voicecare.ai",
+          "test-session-id"
+        ).then((data) => {
+          // Assign sequential IDs to batch request data and keep the original batch_request_id
+          const dataWithSequentialIds = data.response.map((item, index) => ({
+            ...item,
+            sequentialId: (sequentialId + index + 1)
+              .toString()
+              .padStart(5, "0"),
+          }));
+
+          setBatchData(dataWithSequentialIds);
+          setBatchDataBackUp(dataWithSequentialIds);
+          setLoading(false);
+        });
+      })
+      .catch((err) => {
+        setBillingPopup(true);
+        console.log("error", err);
+      });
+  }, [sequentialId]);
+
+  const handleSearch = (value) => {
+    setFilterText(value);
+    const filteredData = batchDataBackup.filter((row) => {
+      const searchText = value.toLowerCase();
+      // Check if any column (excluding "customer_input_filepath") contains the search text
+      return Object.keys(row).some((key) => {
+        if (key !== "customer_input_filepath" && typeof row[key] === "string") {
+          return row[key].toLowerCase().includes(searchText);
+        }
+        return false; // Ignore "customer_input_filepath" and non-string values
+      });
+    });
+    setBatchData(filteredData);
+  };
+
+  const handleCallHistoryClick = (id) => {
+    setBatchId(id);
+    navigate("/call-history");
+  };
+
+  const handleCallProcessClick = (id) => {
+    setBatchId(id);
+    setPage2Visible(true);
+  };
+  
+
   const columns = [
-    { name: "Batch ID", width: "20vh" },
-    { name: "Uploaded By", width: "50vh" },
-    { name: "Date", width: "35vh" },
-    { name: "Time", width: "35vh" },
+    { name: "sequentialId", label: "Batch Id", width: "20vh"},
+    { name: "uploaded_by", label: "Uploaded By", width: "50vh"},
+    { name: "uploaded_date", label:"Date", width: "35vh" },
+    { name: "uploaded_time", label: "Time", width: "35vh" },
     {
+      label: "Action",
       name: "Action",
       width: "30vh",
       render: (row) => (
@@ -21,16 +94,18 @@ const Home = () => {
           <img
             className="sidebar-home-icon"
             src={"/icons/call-process-mini-grey.svg"}
-            onClick={() => handleCallProcess(row)}
+            title="Call and Process"
+            onClick={() => handleCallProcessClick(row.batch_request_id)}
           />
           <img
             className="sidebar-home-icon"
             src={"/icons/call-history-mini-grey.svg"}
-            onClick={() => handleCallHistory(row)}
+            title="Call History"
+            onClick={() => handleCallHistoryClick(row.batch_request_id)}
           />
           <Button
             label={"Download"}
-            onClick={() => handleDownload(row)}
+            onClick={() => handleTabClick(row.customer_input_filepath)}
             color={"#a8a7b4"}
           />
         </div>
@@ -38,102 +113,25 @@ const Home = () => {
     },
   ];
 
-  const handleCallProcess = (row) => {
-    // Handle the action here
-    console.log(`Call Process button clicked`, row["Batch ID"]);
+  const handleTabClick = (url) => {
+    window.open(url, "_blank");
   };
 
-  const handleCallHistory = (row) => {
-    // Handle the action here
-    console.log(`Call History button clicked`, row["Batch ID"]);
+  const handleButtonClick = (action) => {
+    if (action === "reset") {
+      setSelected("");
+      setFilterText("");
+      setBatchData(batchDataBackup);
+    } else if (action === "createBatch") {
+      navigate("/call-automation");
+    }
   };
-
-  const handleDownload = (row) => {
-    // Handle the action here
-    console.log(`Download button clicked`, row["Batch ID"]);
-  };
-
   
-
-  const data = [
-    {
-      "Batch ID": "00001",
-      "Uploaded By": "hunnurji@voicecare.ai",
-      Date: "07 Oct, 2023",
-      Time: "10 : 11 : 00",
-    },
-    {
-      "Batch ID": "00002",
-      "Uploaded By": "hunnurji@voicecare.ai",
-      Date: "08 Oct, 2023",
-      Time: "02 : 12 : 00",
-    },
-    {
-      "Batch ID": "00003",
-      "Uploaded By": "hunnurji@voicecare.ai",
-      Date: "09 Oct, 2023",
-      Time: "12 : 09 : 00",
-    },
-    {
-      "Batch ID": "00004",
-      "Uploaded By": "hunnurji@voicecare.ai",
-      Date: "10 Oct, 2023",
-      Time: "07 : 15 : 00",
-    },
-    {
-      "Batch ID": "00005",
-      "Uploaded By": "hunnurji@voicecare.ai",
-      Date: "15 Oct, 2023",
-      Time: "08 : 12 : 00",
-    },
-    {
-      "Batch ID": "00006",
-      "Uploaded By": "hunnurji@voicecare.ai",
-      Date: "23 Oct, 2023",
-      Time: "03 : 25 : 00",
-    },
-    {
-      "Batch ID": "00007",
-      "Uploaded By": "hunnurji@voicecare.ai",
-      Date: "15 Oct, 2023",
-      Time: "08 : 12 : 00",
-    },
-    {
-      "Batch ID": "00008",
-      "Uploaded By": "hunnurji@voicecare.ai",
-      Date: "23 Oct, 2023",
-      Time: "03 : 25 : 00",
-    },
-    {
-      "Batch ID": "00009",
-      "Uploaded By": "hunnurji@voicecare.ai",
-      Date: "24 Oct, 2023",
-      Time: "03 : 25 : 00",
-    },
-    {
-      "Batch ID": "00010",
-      "Uploaded By": "hunnurji@voicecare.ai",
-      Date: "25 Oct, 2023",
-      Time: "03 : 25 : 00",
-    },
-    {
-      "Batch ID": "00011",
-      "Uploaded By": "hunnurji@voicecare.ai",
-      Date: "26 Oct, 2023",
-      Time: "03 : 25 : 00",
-    },
-    {
-      "Batch ID": "00012",
-      "Uploaded By": "hunnurji@voicecare.ai",
-      Date: "27 Oct, 2023",
-      Time: "03 : 25 : 00",
-    },
-  ];
   return (
     <div className="home-root">
       <div style={{ display: "flex" }}>
         <span style={{ marginTop: "2vh", marginBottom: "2vh" }}>
-          <Search />
+          <Search onChange={handleSearch} />
         </span>
         <span style={{ margin: "2vh" }}>
           <Button
@@ -141,6 +139,7 @@ const Home = () => {
             color={"#ff4e3a"}
             width={"20vh"}
             height={"4vh"}
+            onClick={() => handleButtonClick("reset")}
           />
         </span>
         <span style={{ margin: "2vh" }}>
@@ -149,18 +148,19 @@ const Home = () => {
             color={"#ff4e3a"}
             width={"20vh"}
             height={"4vh"}
+            onClick={() => handleButtonClick("createBatch")}
           />
         </span>
       </div>
-      <Table
+      {loading ? <img className="loader" src="/icons/loader_white.gif" /> : <Table
         headerColor={"#302d4c"}
         dataColor={"#252244"}
         columns={columns}
-        data={data}
+        data={batchData}
         itemsPerPageOptions = {[5, 10, 20]}
         defaultItemsPerPage={10}
-        maxHeight={"75vh"}
-      />
+        maxHeight={"70vh"}
+      />}
     </div>
   );
 };

@@ -1,0 +1,133 @@
+.personal-info-div {
+  margin-top: 2vh;
+  margin-left: 5vh;
+  color: #ffffff;
+}
+.personal-info-title {
+  font-size: 2.5vh;
+  font-weight: 700;
+}
+.personal-info-description {
+  font-size: 1.5vh;
+  font-weight: 500;
+}
+.role-parent {
+  margin-top: 4vh;
+}
+.personal-info-text-box {
+  margin-top: 0.5vh;
+  width: 15vw;
+  height: 4vh;
+  padding-left: 2vh;
+  border-radius: 0.3vh;
+  border-style: none;
+  background: #535167;
+  border-radius: 1vh;
+  color: #ffffff;
+  margin-right: 5vh;
+}
+.personal-info-text-box:focus {
+  outline: none;
+}
+.personal-info-role {
+  margin-top: 1.5vh;
+  font-size: 1.5vh;
+}
+.two-step-verification-options {
+  color: #6b42de;
+  font-size: 2svh;
+  margin-top: 4vh;
+  font-weight: 600;
+}
+
+.two-step-verification-options-desc {
+  font-size: 1.5vh;
+  margin-bottom: 2vh;
+}
+.frame-div {
+  font-size: 1.5vh;
+  margin-bottom: 2vh;
+  width: 35vw;
+  height: 4vh;
+}
+.frame-div-data {
+  float: left;
+}
+.frame-div-toggle {
+  float: right;
+}
+.frame-div-title {
+  font-size: 1.5vh;
+  font-weight: 600;
+}
+
+.personal-info-save {
+  width: 5vw;
+  margin-top: 1vh;
+  height: 3vh;
+  font-family: "Inter", sans-serif;
+  cursor: pointer;
+  font-size: 1.5vh;
+  border-style: none;
+  background-color: #6b42de;
+  color: #ffffff;
+  box-shadow: 0 0.5vh 0.5vh rgba(19, 18, 66, 0.07);
+}
+/* .personal-info-save:hover {
+  box-shadow: 0 1.5vh 0.5vh rgba(6, 4, 119, 0.07);
+} */
+
+.personal-info-save-disabled {
+  width: 5vw;
+  margin-top: 1vh;
+  height: 3vh;
+  font-family: "Inter", sans-serif;
+  font-size: 1.5vh;
+  border-style: none;
+  border-radius: 0.5vh;
+  background-color: #848288;
+  color: #ffffff;
+  box-shadow: 0 0.5vh 0.5vh rgba(19, 18, 66, 0.07);
+}
+/* .personal-info-save-disabled:hover {
+  box-shadow: 0 1.5vh 0.5vh rgba(6, 4, 119, 0.07);
+} */
+
+.PhoneInputCountryDropdown.country-dropdown {
+  display: none;
+}
+
+.PhoneInputCountryDropdown.country-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+}
+
+.PhoneInput {
+  position: relative;
+  width: 30vh;
+  margin-top: 1vh;
+}
+
+.PhoneInput {
+  width: 16vw !important;
+}
+
+.PhoneInput input {
+  width: 16vw !important;
+  height: 4vh;
+  padding-left: 2vh;
+  border-radius: 1vh;
+  border-style: none;
+  background: #535167;
+}
+
+.PhoneInput input:focus {
+  outline: none;
+}
+.phone-number-error {
+  color: red;
+  font-size: 1.5vh;
+}

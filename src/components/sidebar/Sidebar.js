@@ -27,9 +27,9 @@ const Sidebar = () => {
       <div className="sidebar-menu-items">
         <div
           className={
-            location.pathname === "/" ? "sidebar-active-menu" : "sidebar-in-active-menu"
+            location.pathname === "/home" ? "sidebar-active-menu" : "sidebar-in-active-menu"
           }
-          onClick={() => navigateTo("/", "Home")}
+          onClick={() => navigateTo("/home", "Home")}
         >
           <img className="sidebar-home-icon" src="/icons/home-icon.svg" />
           Home

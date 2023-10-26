@@ -1,7 +1,11 @@
 .call-automation-root {
     display: flex;
     flex-direction: row;
-    margin: 2vh;
+}
+.call-automation-inner-root {
+  display: flex;
+  flex-direction: row;
+  margin: 2vh;
 }
 
 .ca-left-section {
@@ -86,4 +90,34 @@
 
 .cals-select-auto-feature::after {
   content: url("/public/icons/down.svg");
+}
+
+/*cars = call automation right section */
+.cars-page-one {
+  margin: 1vh;
+  padding: 1vh;
+  color: #464263;
+  background-color: #131032;
+  width: 64vw;
+  height: 75vh;
+  display: flex;
+  justify-content: center; /* Horizontal alignment */
+  align-items: center; /* Vertical alignment */
+}
+
+.auto-info-input:focus {
+  outline: none;
+}
+.auto-info-input {
+  margin: auto;
+  border: none;
+  appearance: none;
+  width: 65vw;
+  height: 4vh;
+  background-color: #242243;
+  color: #6b42de;
+  font-weight: 500;
+}
+.error-popup {
+  background-color: rgba(36, 34, 67, .7) !important; 
 }

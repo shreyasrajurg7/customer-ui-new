@@ -1,0 +1,54 @@
+.add-new-user-div {
+  border: 0.1vh solid #141036;
+  background-color: #3e3c57 !important;
+  width: 100vh;
+  color: #fff !important;
+  max-width: 100vh !important;
+  height: 80vh;
+  padding-top: 2vh;
+}
+.user-sub-section-list-btn {
+  background-color: inherit;
+  text-align: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 20vh;
+  height: 4vh;
+  color: #6b42de;
+  transition: 0.3s;
+  font-size: 1.5vh;
+}
+
+.user-sub-section-list-btn-selected {
+  text-align: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin: 0;
+  width: 20vh;
+  height: 5vh;
+  color: #6b42de;
+  background: #eef0f9;
+  border-bottom: 0.5vh solid #6b42de;
+  font-size: 1.5vh;
+  font-weight: 700;
+}
+.close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  padding: 0;
+  position: absolute;
+  right: 4vh;
+  top: 2vh;
+}
+
+.close-btn i {
+  color: #333;
+}
+
+.close-btn:hover i {
+  color: #fff;
+}

@@ -1,5 +1,5 @@
 import "./UserAccess.css";
-import Button from "../../common/button/Button";
+import AddNewUser from "./addNewUser/AddNewUser";
 import Table from "../../common/table/Table";
 import { useEffect, useState } from "react";
 import {
@@ -8,19 +8,28 @@ import {
 } from "../../../utils/CustomerUiAPI";
 import { ToastContainer, toast } from "react-toast";
 import { useTheme } from "../../../ThemeContext";
+import Button from "../../common/button/Button";
 
-const UserAccess = () => {
-  const [visible, setVisible] = useState(false);
+const UserAccess = ({}) => {
   const [data, setData] = useState([]);
   const [editData, setEditData] = useState({});
-  
-  const {getSelectedTheme} = useTheme();
+  const [visible, setVisible] = useState(false);
+  const [mode, setMode] = useState("add");
+  const [loading, setLoading] = useState(false);
+  const { getSelectedTheme } = useTheme();
   const theme = getSelectedTheme();
   useEffect(() => {
+    setLoading(true);
     async function fetchData() {
       getCustomerUiUser("hunnurji@voicecare.ai", "test-session-id")
-        .then((res) => setData(res.response))
-        .catch((res) => console.log(res));
+        .then((res) => {
+          setLoading(false);
+          setData(res.response);
+        })
+        .catch((res) => {
+          setLoading(false);
+          console.log(res);
+        });
     }
     fetchData();
   }, [editData, visible]);
@@ -28,25 +37,28 @@ const UserAccess = () => {
   const userTableColumns = [
     {
       name: "User Name",
+      label: "User Name",
       selector: (row) => row.first_name + " " + row.last_name,
       width: "35vh",
     },
     {
       name: "Role",
+      label: "Role",
       selector: (row) => row.role,
       width: "20vh",
     },
     {
       name: "Email",
+      label: "Email",
       selector: (row) => row.email,
       width: "35vh",
     },
     {
-      name: "Actions",
-      selector: (row) => row.locations,
+      name: "Action",
+      label: "Action",
       width: "25vw",
       render: (row) => (
-        <div style={{ display: "flex" }}>
+        <div style={{ display: "flex", justifyContent: "center" }}>
           <img
             className="add-user-icon"
             alt=""
@@ -71,7 +83,7 @@ const UserAccess = () => {
 
   const notifyMessage = (msg) =>
     toast(msg, {
-      backgroundColor: "#8329C5",
+      backgroundColor: "#f54f3b",
       color: "#ffffff",
     });
   const handleDeleteUser = (data) => {
@@ -81,17 +93,46 @@ const UserAccess = () => {
       .then(() => setEditData({}));
   };
 
+  const handleAdd = () => {
+    setVisible(true);
+    setMode("add");
+  };
+
   return (
     <div>
-      {data.length > 0 && <Table
-        headerColor={"#302d4c"}
-        dataColor={"#252244"}
-        columns={userTableColumns}
-        data={data}
-        itemsPerPageOptions={[5, 10, 20]}
-        defaultItemsPerPage={10}
-        maxHeight={"75vh"}
-      />}
+      {loading ? (
+        <img className="loader" src="/icons/loader_white.gif" />
+      ) : (
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex", justifyContent: "flex-end" }}>
+            <span style={{ margin: "1vh" }}>
+              <Button
+                label={"Add New User"}
+                color={"#ff4e3a"}
+                width={"24vh"}
+                height={"4vh"}
+                onClick={handleAdd}
+              />
+            </span>
+          </div>
+          <Table
+            headerColor={"#302d4c"}
+            dataColor={"#252244"}
+            columns={userTableColumns}
+            data={data}
+            itemsPerPageOptions={[5, 10, 20]}
+            defaultItemsPerPage={10}
+            maxHeight={"75vh"}
+          />
+        </div>
+      )}
+      <AddNewUser
+        editData={editData}
+        mode={mode}
+        visible={visible}
+        setEditData={setEditData}
+        setVisible={setVisible}
+      />
       <ToastContainer />
     </div>
   );

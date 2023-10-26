@@ -11,7 +11,7 @@ const Content = () => {
   return (
     <div className="content-root">
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/call-automation" element={<CallAutomation />} />
         <Route path="/call-history" element={<CallHistory />} />
         <Route path="/analytics" element={<Analytics />} />
