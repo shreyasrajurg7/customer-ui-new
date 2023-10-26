@@ -4,7 +4,7 @@ import { useRef, useState, useEffect, useCallback } from 'react';
 import WaveSurfer from 'wavesurfer.js'
 import Timeline from 'wavesurfer.js/dist/plugins/timeline';
 
-
+import sampleAudio from './sample.mp3';
 
 // WaveSurfer hook
 const useWavesurfer = (containerRef, options) => {
@@ -22,8 +22,8 @@ const useWavesurfer = (containerRef, options) => {
       progressColor: '#ffffff',
       cursorColor: '#ddd5e9',
       cursorWidth: 2,
-      barWidth: 4,
-      barGap: 4,
+      barWidth: 3,
+      barGap: 2,
     });
 
     setWavesurfer(ws)
@@ -89,7 +89,7 @@ export const AudioVisualizer = () => {
         height={50}
         waveColor="rgb(200, 0, 200)"
         progressColor="rgb(100, 0, 100)"
-        url={'https://www.samisite.com/sound/cropShadesofGrayMonkees.mp3'}
+        url={sampleAudio}
         plugins={[Timeline.create()]}
       />
     </>
