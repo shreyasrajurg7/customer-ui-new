@@ -1,5 +1,5 @@
 const templateData = {
-  time: 'Sunday - 00:00:01',
+  time: '00:00:01',
   transcript: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus',
   transcript2: 'Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.',
   isComplete: true
@@ -7,7 +7,7 @@ const templateData = {
 
 function generateRandomDataArray(maxLength) {
   const randomData = [];
-  const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const daysOfWeek = ['Caller', 'Callee'];
 
   for (let i = 0; i < maxLength; i++) {
     const randomDay = daysOfWeek[Math.floor(Math.random() * daysOfWeek.length)];
