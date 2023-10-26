@@ -10,6 +10,7 @@ export const UserRole = ({
   setEditData,
   setVisible,
   mode,
+  notifyMessage
 }) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [role, setRole] = useState("");
@@ -96,10 +97,6 @@ export const UserRole = ({
       newSelectedOptions.splice(index, 1);
     }
     setSelectedOptions(newSelectedOptions);
-  };
-
-  const notifyMessage = (message) => {
-    toast.info(message);
   };
 
   const handleSave = () => {

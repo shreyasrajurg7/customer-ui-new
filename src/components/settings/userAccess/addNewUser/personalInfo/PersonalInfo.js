@@ -3,7 +3,6 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import PhoneInput from "react-phone-number-input";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import { toast } from "react-toastify";
 import "./PersonalInfo.css";
 import {
   getCustomerUiRbca,
@@ -12,7 +11,7 @@ import {
 } from "../../../../../utils/CustomerUiAPI";
 import Button from "../../../../common/button/Button";
 
-const PersonalInfo = ({ editData, setVisible, handleClose, mode }) => {
+const PersonalInfo = ({ editData, setVisible, handleClose, mode, notifyMessage}) => {
   const [role, setRole] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -146,10 +145,6 @@ const PersonalInfo = ({ editData, setVisible, handleClose, mode }) => {
         }
       );
     }
-  };
-
-  const notifyMessage = (message) => {
-    toast.info(message);
   };
 
   const validateRole = () => {

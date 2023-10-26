@@ -145,6 +145,7 @@ const UserRoles = () => {
         setVisible={setVisible}
         setEditData={setEditData}
         mode={mode}
+        notifyMessage={notifyMessage}
       />
       <ToastContainer />
     </div>

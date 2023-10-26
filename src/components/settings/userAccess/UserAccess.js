@@ -132,6 +132,7 @@ const UserAccess = ({}) => {
         visible={visible}
         setEditData={setEditData}
         setVisible={setVisible}
+        notifyMessage={notifyMessage}
       />
       <ToastContainer />
     </div>
