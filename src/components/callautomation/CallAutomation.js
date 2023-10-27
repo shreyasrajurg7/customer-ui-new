@@ -36,8 +36,8 @@ const CallAutomation = () => {
   const format = "MM-DD-YYYY";
   const [startTimeClicked, setStartTimeClicked] = useState(false);
   const [endTimeClicked, setEndTimeClicked] = useState(false);
-  const [automationFeature, setAutomationFeature] = useState("benifits");
-  const [automationType, setAutomationType] = useState("manual");
+  const [automationFeature, setAutomationFeature] = useState("");
+  const [automationType, setAutomationType] = useState("");
   const [submitClicked, setSubmitClicked] = useState(false);
 
   const [transormedData, setTransformedData] = useState([]);
@@ -485,8 +485,11 @@ const CallAutomation = () => {
               value={automationFeature}
               onChange={(e) => setAutomationFeature(e.target.value)}
             >
-              <option value={"benifits"}>Benifit Verification</option>
-              <option value={"priorAuth"}>Prior Authentication</option>
+              <option value="" disabled>Choose Process Type</option>
+              <option value={"benefits"}>Benefits Verification</option>
+              <option value={"priorAuth"}>Prior Authentication follow up</option>
+              <option value={"priorAuth"}>Claim Status</option>
+              <option value={"priorAuth"}>Prescription support</option>
             </select>
             <select
               className="cals-select-auto-feature"
@@ -495,8 +498,9 @@ const CallAutomation = () => {
                 setAutomationType(e.target.value);
               }}
             >
+              <option value="" disabled>Choose Automation Type</option>
               <option value={"manual"}>Manual</option>
-              <option value={"auto"}>Auto</option>
+              <option value={"auto"}>Api</option>
             </select>
             <span style={{ display: "flex", justifyContent: "space-evenly" }}>
               <Button

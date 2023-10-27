@@ -15,9 +15,14 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!-- Custom CSS styles for the Beacon button -->
     <style>
-      /* You can remove the custom CSS styles here */
+      /* Your custom styles for the Beacon button */
+      .custom-beacon-button {
+        background-color: #007bff; /* Example background color */
+        color: #fff; /* Example text color */
+        border-radius: 5px; /* Example border radius */
+        /* Add more custom styles as needed */
+      }
     </style>
     <script type="text/javascript">
       !(function (e, t, n) {
@@ -45,19 +50,32 @@
 
       // Wait for the page to fully load
       document.addEventListener("DOMContentLoaded", function () {
-        // Select the Beacon button element
-        const beaconButton = document.querySelector(
-          ".c-FabButtonCritical__button--text-and-icon"
-        );
+        // Select the Beacon button element using the correct selector
+        const beaconButton = document.querySelector(".custom-beacon-button"); // Replace with your actual selector
 
         // Apply your custom styles
         if (beaconButton) {
           beaconButton.style.height = "1vh";
+          // Add more custom styles as needed
         }
       });
     </script>
     <script type="text/javascript">
       window.Beacon("init", "99945135-b710-4db9-adfe-0618ce94410c");
+    </script>
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function () {
+        // Select the Beacon button element using the correct selector
+        const beaconButton = document.querySelector(".custom-beacon-selector");
+    
+        // Apply your custom styles
+        if (beaconButton) {
+          beaconButton.style.backgroundColor = "#007bff"; // Example background color
+          beaconButton.style.color = "#fff"; // Example text color
+          beaconButton.style.borderRadius = "5px"; // Example border radius
+          // Add more custom styles as needed
+        }
+      });
     </script>
   </head>
   <body>

@@ -33,7 +33,7 @@ const Settings = () => {
           >
             Manage User Roles
           </span>
-          {/* <span style={{ margin: "1vh" }}>Theme</span> */}
+          <span style={{ margin: "1vh" }}>Theme</span>
         </div>
         <div className="setting-inner-content">
           {menu === "users" ? <UserAccess /> : <UserRoles />}

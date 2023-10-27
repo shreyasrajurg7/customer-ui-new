@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { MenuProvider } from './components/common/menuContext/MenuContext';
+import "./beacon-style.css";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

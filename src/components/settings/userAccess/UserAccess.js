@@ -103,12 +103,12 @@ const UserAccess = ({}) => {
       {loading ? (
         <img className="loader" src="/icons/loader_white.gif" />
       ) : (
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        <div style={{ display: "flex", flexDirection: "column", color: theme.textColor }}>
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
             <span style={{ margin: "1vh" }}>
               <Button
                 label={"Add New User"}
-                color={"#ff4e3a"}
+                color={theme.button}
                 width={"24vh"}
                 height={"4vh"}
                 onClick={handleAdd}
@@ -116,8 +116,9 @@ const UserAccess = ({}) => {
             </span>
           </div>
           <Table
-            headerColor={"#302d4c"}
-            dataColor={"#252244"}
+            headerColor={theme.tableHeader}
+            dataColor={theme.search}
+            headerTextColor={theme.textColor}
             columns={userTableColumns}
             data={data}
             itemsPerPageOptions={[5, 10, 20]}

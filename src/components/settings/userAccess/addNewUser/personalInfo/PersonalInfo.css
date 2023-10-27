@@ -122,6 +122,7 @@
   border-radius: 1vh;
   border-style: none;
   background: #535167;
+  color: #ffffff;
 }
 
 .PhoneInput input:focus {

@@ -3,6 +3,8 @@ import { Col, Row } from 'antd';
 import { UserList, AudioVisualizerWithTranscription } from './widgets';
 import './CallHistory.css';
 import { CallSummaryInfo } from './widgets/CallSummary';
+import { useCallHistoryProvider, CallHistoryProvider } from './context/CallHIstoryContext';
+
 
 export const CallHistory = () => {
   const [selectedUser, setSelectedUser] = useState(null);
@@ -29,4 +31,8 @@ export const CallHistory = () => {
   );
 };
 
-export default CallHistory;
+export default () => (
+  <CallHistoryProvider>
+    <CallHistory />
+  </CallHistoryProvider>
+);

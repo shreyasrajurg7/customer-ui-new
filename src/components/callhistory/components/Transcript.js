@@ -1,19 +1,26 @@
 import { Flex, Space, Typography } from 'antd';
 import React from 'react';
-import { Colors } from '../helpers';
+import { Colors, convertMsToTime } from '../helpers';
 import { randomTranscriptData } from '../mock-data';
+import { useCallHistoryProvider } from '../context/CallHIstoryContext';
 
 
 const { Text } = Typography;
 
 
+
 export const Transcripts = () => {
-  const renderTranscript = ({ time, transcript, isComplete }) => {
+  const { callContent } = useCallHistoryProvider();
+  const { call_transcription_fragment } = callContent || {};
+  
+  const renderTranscript = ({ telecom_persona_type, time_end, text, time_start}) => {
+    const time = convertMsToTime(new Date(time_end) - new Date(time_start))
+    const isComplete = false // TODO: 
     return (
       <Flex className='call-history__transcript-wrapper'>
-        <Text style={{ color: Colors.textLight }}>{time}</Text>
+        <Text style={{ color: Colors.textLight }}>{telecom_persona_type} {time}</Text>
         <Flex className={`call-history__transcript ${isComplete ? 'completed' : ''}`}>
-          <Text>{transcript}</Text>
+          <Text>{text}</Text>
         </Flex>
       </Flex>
     );
@@ -23,8 +30,8 @@ export const Transcripts = () => {
       <Text style={{ color: Colors.text, fontSize: 18, marginTop: 14 }}>Call Transcript</Text>
       <Space className='scroll-container' style={{maxHeight: '30vh', overflow: 'auto'}} direction='vertical'>
         {
-          randomTranscriptData.map((item, i) => {
-            return renderTranscript({ time: item.time, transcript: item.transcript, isComplete: i < 2 })
+          call_transcription_fragment?.map((item, i) => {
+            return renderTranscript(item)
           })
         }
       </Space>

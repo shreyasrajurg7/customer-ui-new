@@ -10,6 +10,7 @@ const Table = ({
   itemsPerPageOptions,
   defaultItemsPerPage,
   maxHeight,
+  headerTextColor
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(defaultItemsPerPage);
@@ -94,7 +95,7 @@ const Table = ({
           width: "-webkit-fill-available"
         }}
       >
-        <thead style={{ background: headerColor, color: "white" }}>
+        <thead style={{ background: headerColor, color: headerTextColor }}>
           <tr>
             {columns.map((column, index) => (
               <th

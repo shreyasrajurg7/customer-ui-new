@@ -1,6 +1,7 @@
 import { Flex, Space, Typography } from 'antd';
 import React, { useState } from 'react';
 import { Colors } from '../helpers';
+import { useCallHistoryProvider } from '../context/CallHIstoryContext';
 
 const { Text } = Typography;
 
@@ -68,19 +69,32 @@ export const CallSummary = () => {
     </Space>
   );
 };
+ 
 
 export const MoreCallDetails = () => {
-  const [activeTab, setActiveTab] = useState('more-details');
+  const [activeTab, setActiveTab] = useState('transfer-details');
+  const { callContent } = useCallHistoryProvider();
+  const { overall_call_metadata } = callContent || {};
+  const { before_transfer, after_transfer } = overall_call_metadata || {};
+
+  const keys = {
+    id: 'Conversation ID',    
+    call_end_time: 'End Time Stamp',
+    call_start_time: 'Start Time Stamp',
+    total_talk_time: "Total Duration",
+    caller_name: 'Caller Name',
+  }
 
   const data = {
-    'more-details': moreCallDetails,
-    'transfer-details': transferCallDetails,
+    'more-details': after_transfer || {},
+    'transfer-details': before_transfer || {},
   }
 
   const renderKeyValues = ({ key, value }) => {
+    const title = keys[key]
     return (
       <Flex justify='space-between' style={{ width: '100%' }}>
-        <Text style={{ color: Colors.text, fontSize: 12, width: '50%', paddingLeft: 20 }}>{key}</Text>
+        <Text style={{ color: Colors.text, fontSize: 12, width: '50%', paddingLeft: 20 }}>{title}</Text>
         <Text style={{ color: Colors.textLight, fontSize: 12, width: '20%' }}>:</Text>
         <Text style={{ color: Colors.textLight, fontSize: 12, width: '30%', marginLeft: 'auto' }}>{value}</Text>
       </Flex>
@@ -93,12 +107,13 @@ export const MoreCallDetails = () => {
           <Text style={{ color: Colors.text, fontSize: 12 }}>More Call Details</Text>
         </div>
         <div className={`transfer-details ${activeTab === 'transfer-details' ? 'active' : ''}`} onClick={() => setActiveTab('transfer-details')}>
-          <Text style={{ color: Colors.text, fontSize: 12 }}>More Call Details</Text>
+          <Text style={{ color: Colors.text, fontSize: 12 }}>Transfer Call Details</Text>
         </div>
       </Flex>
       <Flex vertical gap={4}>
           {
-            Object.entries(data[activeTab]).map(([key, value]) => {
+            Object.entries(data[activeTab])?.map(([key, value]) => {
+              console.log({ key, value })
               return renderKeyValues({key, value})
             })
           }

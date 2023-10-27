@@ -6,7 +6,8 @@ const darkTheme = {
     tableHover: "#6d6b7f",
     tableButton: "#bbbbc3",
     search: "#242243",
-    button: "#ff4e3a"
+    button: "#ff4e3a",
+    textColor: "#ffffff"
 };
 
 const lightTheme = {
@@ -17,7 +18,8 @@ const lightTheme = {
     tableHover: "#6d6b7f",
     tableButton: "#bbbbc3",
     search: "#ffffff",
-    button: "#ff4e3a"
+    button: "#ff4e3a",
+    textColor: "#000000"
 };
 
 export {darkTheme, lightTheme};

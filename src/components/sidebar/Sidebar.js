@@ -4,11 +4,12 @@ import "./Sidebar.css";
 
 import { useMenu } from "../common/menuContext/MenuContext";
 import { useTheme } from "../../ThemeContext";
-
-const Sidebar = () => {
+import Button from "../common/button/Button";
+import { useLogout } from "../../utils/hooks";
+const Sidebar = ({ setIsAuthenticated }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  
+
   const { selectedMenu, selectMenu } = useMenu();
 
   const navigateTo = (route, menu) => {
@@ -16,18 +17,32 @@ const Sidebar = () => {
     selectMenu(menu);
   };
 
-  const {getSelectedTheme} = useTheme();
+  const logout = useLogout();
+  const handleLogout = () => {
+    logout();
+    setIsAuthenticated(false);
+  };
+
+  const { getSelectedTheme, toggleTheme } = useTheme();
   const theme = getSelectedTheme();
-  const{sidebar} = theme;
 
   return (
-    <div className="sidebar-root" style={{backgroundColor: sidebar}}>
-      <img className="sidebar-logo" src="/icons/voice-care-logo.svg" />
+    <div
+      className="sidebar-root"
+      style={{ backgroundColor: theme.sidebar, color: theme.textColor }}
+    >
+      <img
+        className="sidebar-logo"
+        src="/icons/voice-care-logo.svg"
+        onClick={() => toggleTheme()}
+      />
       <span className="sidebar-menu-text">Menu</span>
       <div className="sidebar-menu-items">
         <div
           className={
-            location.pathname === "/home" ? "sidebar-active-menu" : "sidebar-in-active-menu"
+            location.pathname === "/home"
+              ? "sidebar-active-menu"
+              : "sidebar-in-active-menu"
           }
           onClick={() => navigateTo("/home", "Home")}
         >
@@ -36,7 +51,9 @@ const Sidebar = () => {
         </div>
         <div
           className={
-            location.pathname === "/call-automation" ? "sidebar-active-menu" : "sidebar-in-active-menu"
+            location.pathname === "/call-automation"
+              ? "sidebar-active-menu"
+              : "sidebar-in-active-menu"
           }
           onClick={() => navigateTo("/call-automation", "Call Automation")}
         >
@@ -45,7 +62,9 @@ const Sidebar = () => {
         </div>
         <div
           className={
-            location.pathname === "/call-history" ? "sidebar-active-menu" : "sidebar-in-active-menu"
+            location.pathname === "/call-history"
+              ? "sidebar-active-menu"
+              : "sidebar-in-active-menu"
           }
           onClick={() => navigateTo("/call-history", "Call History")}
         >
@@ -54,7 +73,9 @@ const Sidebar = () => {
         </div>
         <div
           className={
-            location.pathname === "/analytics" ? "sidebar-active-menu" : "sidebar-in-active-menu"
+            location.pathname === "/analytics"
+              ? "sidebar-active-menu"
+              : "sidebar-in-active-menu"
           }
           onClick={() => navigateTo("/analytics", "Analytics")}
         >
@@ -63,12 +84,23 @@ const Sidebar = () => {
         </div>
         <div
           className={
-            location.pathname === "/settings" ? "sidebar-active-menu" : "sidebar-in-active-menu"
+            location.pathname === "/settings"
+              ? "sidebar-active-menu"
+              : "sidebar-in-active-menu"
           }
           onClick={() => navigateTo("/settings", "Settings")}
         >
           <img className="sidebar-home-icon2" src="/icons/settings.svg" />
           Settings
+        </div>
+        <div style={{ marginTop: "42vh", marginLeft: "2vh" }}>
+          <Button
+            label="Log Out"
+            color={"#ff4e3a"}
+            width={"20vh"}
+            height={"4vh"}
+            onClick={handleLogout}
+          />
         </div>
       </div>
     </div>
